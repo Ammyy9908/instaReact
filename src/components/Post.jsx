@@ -25,7 +25,7 @@ function Post({keyword,likes}) {
 
     const onEmojiClick = (event, emojiObject) => {
         setEmoji(emojiObject);
-        setComment(comment+emojiObject.emoji+" ");
+        setComment(comment+emoji.emoji+" ");
       };
 
 

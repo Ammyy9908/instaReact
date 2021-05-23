@@ -40,7 +40,7 @@ function Navbar(props) {
 
             </div>
             <div className="activity__text">
-                <a href="#">Sumit Bighaniya</a> <span>started following you.</span> <time>1w</time>
+                <a href="/">Sumit Bighaniya</a> <span>started following you.</span> <time>1w</time>
             </div>
             <button className="activity__button">
                 Following

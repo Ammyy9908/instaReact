@@ -3,21 +3,21 @@ import Navbar from '../components/Navbar'
 import "./Inbox.css"
 
 
-function Chat({type,message}){
-        return  <>{type==="me" ? <div className="chat chat__me">
-        <div className="bubble__me chat__main">
-            {message}
-        </div>
-    </div>:<div className="chat chat__from">
-                                    <div className="chat__wrapper">
-                                        <div className="chat__from__avatar"></div>
-                                    <div className="bubble__from chat__main">
-                                        {message}
-                                    </div>
-                                    </div>
-                                </div>
-    }</>
-}
+// function Chat({type,message}){
+//         return  <>{type==="me" ? <div className="chat chat__me">
+//         <div className="bubble__me chat__main">
+//             {message}
+//         </div>
+//     </div>:<div className="chat chat__from">
+//                                     <div className="chat__wrapper">
+//                                         <div className="chat__from__avatar"></div>
+//                                     <div className="bubble__from chat__main">
+//                                         {message}
+//                                     </div>
+//                                     </div>
+//                                 </div>
+//     }</>
+// }
 
 
 function BlankChatList(){

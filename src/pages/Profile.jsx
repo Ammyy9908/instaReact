@@ -13,7 +13,9 @@ function Profile(props) {
         if(!Cookies.get("AUTH_TOKEN")){
             history.push(`/auth/login`);
         }
-    },[])
+    },
+     // eslint-disable-next-line
+    [])
     return (
         <div className="profile__page">
             <Navbar/>

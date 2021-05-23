@@ -10,7 +10,7 @@ function Verify({email}) {
     const history = useHistory();
     const verify = async ()=>{
         try{
-            const r = await axios.post(`https://secure-woodland-04703.herokuapp.com/auth/verify`,{email,email,verifyCode:code});
+            const r = await axios.post(`https://secure-woodland-04703.herokuapp.com/auth/verify`,{email:email,verifyCode:code});
             return r.data;
         }
         catch(e){
@@ -23,7 +23,7 @@ function Verify({email}) {
 
     const resendCode = async ()=>{
         try{
-            const r = await axios.put(`https://secure-woodland-04703.herokuapp.com/auth/sendcode`,{email,email});
+            const r = await axios.put(`https://secure-woodland-04703.herokuapp.com/auth/sendcode`,{email:email});
             return r.data;
         }
         catch(e){
