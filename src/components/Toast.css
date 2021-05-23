@@ -1,0 +1,23 @@
+.error_toast{
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top:12px;
+    padding-bottom: 12px;
+    background-color: #fff;
+    width: 250px;
+    position:fixed;
+    top: 15px;
+    right: -450px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.115);
+    border-radius:5px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    transition: all 0.5s ease-in-out;
+}
+.toast__message{
+    margin-left: 10px;
+}
+.toast__enable{
+    right: 15px;
+}

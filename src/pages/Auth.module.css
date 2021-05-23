@@ -1,0 +1,98 @@
+.authScreen{
+    width: 100%;
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #fafafa;
+    flex-direction: column;
+}
+.authBody{
+    background-color: #fff;
+    border: 1px solid rgb(219, 219, 219);
+    -webkit-box-align: center;
+-webkit-box-direction: normal;
+-webkit-box-orient: vertical;
+align-items: center;
+display:flex;
+flex-direction:column;
+flex-shrink: 0;
+font-size: 14px;
+padding-bottom: 10px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 10px;
+position: relative;
+vertical-align: baseline;
+width: 350px;
+}
+
+.auth__form{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form__control{
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    border: 1px solid rgba(215, 213, 213, 1);
+    border-radius:3px;
+    background-color: #fafafa;
+
+}
+
+.form__control input{
+    width: 90%;
+    height: 36px;
+    background-color:transparent;
+    border: 0;
+    outline:0;
+    padding-left: 15px;
+}
+.auth__form button{
+    width: 90%;
+    margin: 0px auto;
+    height: 35px;
+    background-color: #479dff;
+    border-radius:4px;
+    color: #fff;
+    border: 0;
+    outline:0;
+    font-weight: 600;
+    font-size: 14px;
+}
+.auth__form .disabled__btn{
+background-color:#94c0f1;
+}
+.auth__switcher{
+border-radius: 1px;
+margin: 1.5rem;
+width: 350px;
+padding-top:1.5rem;
+padding-bottom: 1.5rem;
+background-color: rgb(255, 255, 255);
+border: 1px solid rgb(219, 219, 219);
+display:flex;
+align-items: center;
+justify-content: center;
+}
+
+.auth__switcher span{
+font-size: 14px;
+text-align: center;
+}
+.auth__switcher a{
+    color: rgba(25, 142, 218, 1);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.authBody h3{
+    width: 90%;
+    margin: 25px auto;
+    text-align: center;
+}

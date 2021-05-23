@@ -1,0 +1,44 @@
+.stories{
+    width: 75%;
+    background-color: #fff;
+    margin: 25px auto;
+    height:118px;
+    border: 1px solid #e9e9e9;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.storie__presentation{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    height:80%;
+    align-items: center;
+    overflow-x: scroll;
+}
+.story{
+    min-width: 90px;
+    height: 100%;
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.story__avatar{
+    width: 70px;
+    height: 70px;
+    background-color:#ccc;
+    border-radius:50%;
+    
+}
+.story_uname{
+    display: block;
+font-size: 12px;
+line-height: 14px;
+letter-spacing: .01em;
+max-width: 74px;
+margin-top: 10px;
+}

@@ -1,0 +1,74 @@
+.accounts__body{
+    width: 100%;
+    height:90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.confirm__phone__body__wrapper{
+    font-size: 14px;
+    width: 444px;
+font-weight: 400;
+line-height: 20px;
+padding: 32px 36px;
+border: 1px solid #bebebe;
+border-radius:3px;
+}
+.confirm__phone__main{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    text-align: center;
+}
+.account__setup__icon{
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.confirm__phone__main h3{
+    font-weight: 600;
+margin-top: 13px;
+}
+.confirm__phone__main > p{
+    margin-bottom: 16px;
+    margin-top:0 ;
+    color: rgba(139, 138, 138, 1);
+    font-weight: 400;
+
+}
+.form__account__setup{
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+}
+.form__control__phone{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    height: 36px;
+    border: 1px solid #e9e9e9;
+    margin-bottom: 15px;
+}
+.form__control__phone input{
+    border: 0;
+    outline:0;
+    background-color:transparent;
+    padding-left: 15px;
+
+}
+.form__account__setup input[type="submit"]{
+    height:35px;
+    background-color:rgb(11, 123, 250);
+    color: #fff;
+    font-weight: 600;
+    border: 0;
+    outline:0;
+    border-radius: 4px;
+}
