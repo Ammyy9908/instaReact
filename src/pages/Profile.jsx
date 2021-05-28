@@ -23,7 +23,7 @@ function Profile(props) {
                 <div className="profile__top">
                     
                     <div className="user__avatar__big">
-                    {props.user && props.user.avatar?<img src={props.user.avatar}/>:props.user.fullName.slice(0,2)}
+                    {props.user && props.user.avatar?<img src={props.user.avatar} alt="avatar__img"/>:props.user.fullName.slice(0,2)}
                     </div>
                     <div className="user__profile__details">
                             <div className="detail__first">
