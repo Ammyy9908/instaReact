@@ -163,7 +163,7 @@ function Auth({type}) {
     clientId="688025704310-mal2da29j49vmat22s1ad156fg6a93f8.apps.googleusercontent.com"
     buttonText="Login"
     render={renderProps => (
-        <button onClick={renderProps.onClick} disabled={renderProps.disabled} className="google__btn">Login with Google</button>
+        <button onClick={renderProps.onClick} disabled={renderProps.disabled} className="google__btn">Sign up  with Google</button>
       )}
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
