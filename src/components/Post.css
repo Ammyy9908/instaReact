@@ -177,6 +177,10 @@ letter-spacing: .5px;
     top: -315px !important;
 }
 
+.more_mobile,.more__desktop{
+    cursor: pointer;
+}
+
 @media screen and (max-width:465px){
     .post{margin-bottom: 0px;
 border: 0;
@@ -184,4 +188,14 @@ border: 0;
     .post__header{
         border: 0;
     }
+
+    .more__desktop{
+        display: none !important;
+    }
+}
+
+@media screen and (min-width:468px){
+.more_mobile{
+    display: none !important;
+}
 }
