@@ -20,6 +20,7 @@ function Auth({type}) {
     const [fullName,setFullName] = React.useState('');
     const [password,setPassword] = React.useState('');
     const [error,setError] = React.useState(false);
+    const [avatar,setAvatar] = React.useState('');
 
     React.useEffect(() => {
             setUsername('');
@@ -127,6 +128,16 @@ function Auth({type}) {
             console.log(response);
         }
 
+        const {name,imageUrl,email} = response.profileObj;
+
+        setFullName(name);
+        setAvatar(imageUrl);
+        setEmail(email);
+        checkSignUp().then((data)=>{
+            console.log(data);
+        })
+        
+
       }
     return (
         <div className={styles.authScreen}>
@@ -147,7 +158,7 @@ function Auth({type}) {
                 </>}
                 
                 <button type="submit" onClick={type==="reg"?checkSignUp:checkLogin}>{type==="login"? "Login":"Sign Up"}</button>
-                <GoogleLogin
+               {type==="reg" &&<GoogleLogin
     clientId="688025704310-mal2da29j49vmat22s1ad156fg6a93f8.apps.googleusercontent.com"
     buttonText="Login"
     render={renderProps => (
@@ -156,7 +167,7 @@ function Auth({type}) {
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
     cookiePolicy={'single_host_origin'}
-  />
+  />}
                 </div>
             </div>
 
