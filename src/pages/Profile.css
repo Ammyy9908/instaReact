@@ -29,6 +29,10 @@ margin-bottom: 30px;
     font-size: 25px;
     color: #fff;
 }
+.user__avatar__big img{
+    width: 100%;
+    border-radius:50%;
+}
 .user__profile__details{
     flex: 1;
     width: 100%;

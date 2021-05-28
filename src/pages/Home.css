@@ -64,6 +64,10 @@ height:100vh;
     justify-content: center;
     color: #fff;
 }
+.user_avatar img{
+    width: 100%;
+    border-radius:50%;
+}
 .user__textual__info{
     display: flex;
     align-items: flex-start;

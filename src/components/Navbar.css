@@ -132,6 +132,10 @@ background-image: url(https://www.instagram.com/static/bundles/es6/sprite_core_3
     font-size: 11px;
     color: #fff;
 }
+.avatar img{
+    width:100%;
+    border-radius:50%;
+}
 
 
 .navbar__dropdown{

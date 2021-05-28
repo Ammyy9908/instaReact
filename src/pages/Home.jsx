@@ -165,7 +165,7 @@ return browserName;
                 <div className="home__profile">
                     <div className="home__profile__header" onClick={handleProfileNav}>
                         <div className="user_avatar">
-                        {props.user && props.user.fullName[0]}
+                        {props.user!=null ?props.user.avatar?<img src={props.user.avatar}/>: props.user.fullName[0]:null}
                         </div>
                         <div className="user__textual__info">
                             <span>{props.user && props.user.fullName}</span>
