@@ -176,3 +176,12 @@ letter-spacing: .5px;
     position:absolute !important;
     top: -315px !important;
 }
+
+@media screen and (max-width:465px){
+    .post{margin-bottom: 0px;
+border: 0;
+    }
+    .post__header{
+        border: 0;
+    }
+}

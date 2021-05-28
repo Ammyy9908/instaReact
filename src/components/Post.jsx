@@ -10,6 +10,7 @@ import TimeAgo from 'javascript-time-ago'
 import ReactTimeAgo from 'react-time-ago'
 import Picker from 'emoji-picker-react';
 import PostModal from './PostModal';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 TimeAgo.addDefaultLocale(en)
 
@@ -78,7 +79,10 @@ function Post({keyword,likes}) {
                         Sumit Kumar
                     </div>
                 </div>
-                <span className="more__icon" onClick={()=>setModal(true)}></span>
+                <span onClick={()=>setModal(true)}>
+<MoreVertIcon/>
+                    
+                </span>
 
             </div>
             <div className="post__image" onDoubleClick={handleLike}>

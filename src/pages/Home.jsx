@@ -141,7 +141,7 @@ return browserName;
     return (
         <div className="home__container">
 
-            <button className="new_post_btn"><AddIcon/> <span>New Post</span></button>
+         
             <Navbar/>
 
             <div className="navbar__mobile">

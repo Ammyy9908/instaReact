@@ -70,3 +70,9 @@ align-items: center;
 justify-content: center;
 
 }
+
+@media screen and (max-width:465px){
+    .post__modal__popup{
+            width: 80%;
+    }
+}
