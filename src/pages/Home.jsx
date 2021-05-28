@@ -75,7 +75,7 @@ return browserName;
         }
         async function getUser() {
                 try{
-                    const r = await axios.get('http://localhost:5000/auth/user',{headers:{
+                    const r = await axios.get('https://secure-woodland-04703.herokuapp.com/auth/user',{headers:{
                         "Authorization":"Bearer " +Cookies.get("AUTH_TOKEN"),
                         "Content-Type":"application/json"
                     }})
@@ -113,7 +113,7 @@ return browserName;
             getLocation().then((data)=>{
                 console.log(data);
                 try{
-                    const r = axios.put("http:://localhost:5000/auth/updateActivity",{data,browser:browser && browser,email: props.user && props.user.email});
+                    const r = axios.put("https://secure-woodland-04703.herokuapp.com/auth/updateActivity",{data,browser:browser && browser,email: props.user && props.user.email});
                     console.log(r.data)
                 }
                 catch(e){
