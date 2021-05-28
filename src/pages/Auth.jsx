@@ -5,6 +5,7 @@ import axios from "axios";
 import "./Auth.css"
 import Cookies from "js-cookie"
 import Toast from '../components/Toast';
+import GoogleLogin from 'react-google-login';
 
 function TextField({placeholder,type,value,setValue,id}){
     return <div className={styles.form__control} id={id}>
@@ -117,6 +118,9 @@ function Auth({type}) {
             console.error(e);
         })
     }
+    const responseGoogle = (response) => {
+        console.log(response);
+      }
     return (
         <div className={styles.authScreen}>
             <Toast error={error} setError={setError}/>
@@ -136,6 +140,13 @@ function Auth({type}) {
                 </>}
                 
                 <button type="submit" onClick={type==="reg"?checkSignUp:checkLogin}>{type==="login"? "Login":"Sign Up"}</button>
+                <GoogleLogin
+    clientId="688025704310-mal2da29j49vmat22s1ad156fg6a93f8.apps.googleusercontent.com"
+    buttonText="Login"
+    onSuccess={responseGoogle}
+    onFailure={responseGoogle}
+    cookiePolicy={'single_host_origin'}
+  />
                 </div>
             </div>
 
