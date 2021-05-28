@@ -36,7 +36,8 @@ function Auth({type}) {
                 full_name:fullName,
                 username,
                 password,
-                email
+                email,
+                avatar,
             
             }
             try{
