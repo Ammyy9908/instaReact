@@ -2,10 +2,19 @@ import Cookies from 'js-cookie';
 import React from 'react'
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
+import { setPage } from '../actions/uiAction';
 import Navbar from '../components/Navbar';
 import "./Profile.css";
 
 function Profile(props) {
+
+    React.useEffect(()=>{
+        props.setPage('profile');
+    },
+     // eslint-disable-next-line
+    []);
+
+
     const history = useHistory();
     // check is user authenticated or not
     React.useEffect(()=>{
@@ -50,5 +59,11 @@ function Profile(props) {
 
 const mapStateToProps = (state) =>({
     user: state.userReducer.user,
+
 })
-export default connect(mapStateToProps,null)(Profile)
+
+const mapDispatchToProps = (dispatch)=>({
+
+    setPage:(activePage)=>(dispatch(setPage(activePage))),
+})
+export default connect(mapStateToProps,mapDispatchToProps)(Profile)

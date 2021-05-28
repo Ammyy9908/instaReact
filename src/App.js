@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Profile from "./pages/Profile";
 import ConfirmPhone from "./pages/ConfirmPhone";
 import Inbox from "./pages/Inbox";
+import Activity from "./pages/Activity";
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
     </Route>
     <Route exact path="/direct/inbox">
     <Inbox/>
+    </Route>
+
+    <Route exact path="/activity">
+    <Activity/>
     </Route>
  
 

@@ -240,18 +240,19 @@ margin-bottom: 5px;
 .message__count{
     position:absolute;
     display:block;
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     background-color: red;
     border-radius: 50%;
     color: #fff;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: 600;
     display:flex;
     align-items:center;
     justify-content: center;
-    top: 1px;
-    right:5px;
+    top: 0px;
+    right:0px;
+    font-family: sans-serif;
 }
 .navbar__mobile__right button{
     position: relative;

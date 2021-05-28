@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { setPage } from '../actions/uiAction'
 import Navbar from '../components/Navbar'
 import "./Inbox.css"
 
@@ -30,7 +32,16 @@ function BlankChatList(){
     </div>
 }
 
-function Inbox() {
+function Inbox(props) {
+
+    React.useEffect(()=>{
+        props.setPage('message');
+    },
+     // eslint-disable-next-line
+    []);
+
+
+
     return (
         <div className="Inbox">
             <Navbar/>
@@ -103,5 +114,13 @@ function Inbox() {
         </div>
     )
 }
+const mapStateToProps = (state) =>({
+    user: state.userReducer.user,
 
-export default Inbox
+})
+
+const mapDispatchToProps = (dispatch)=>({
+
+    setPage:(activePage)=>(dispatch(setPage(activePage))),
+})
+export default connect(mapStateToProps,mapDispatchToProps)(Inbox)
