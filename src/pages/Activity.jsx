@@ -23,21 +23,23 @@ function FollowActivity({type}){
 }
 
 
-function PostActivity(){
-    return (
-        <div className="post__activity">
-            <div className="post__avatar"></div>
-            <div className="post__activity__text"></div>
-            <div className="post__thumb"></div>
-        </div>
-    )
-}
+// function PostActivity(){
+//     return (
+//         <div className="post__activity">
+//             <div className="post__avatar"></div>
+//             <div className="post__activity__text"></div>
+//             <div className="post__thumb"></div>
+//         </div>
+//     )
+// }
 
 function Activity(props) {
 
     React.useEffect(()=>{
         props.setPage("activity");
-    },[]);
+    },
+    // eslint-disable-next-line
+    []);
     const history = useHistory();
     const handleNav = (link) =>{
         history.push(link);

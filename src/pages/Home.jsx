@@ -24,7 +24,9 @@ function Home(props) {
 
     React.useEffect(()=>{
         props.setPage('home');
-    },[]);
+    },
+    // eslint-disable-next-line
+    []);
 
     console.log("user Props are",props)
 const [browser,setBorwser] = React.useState('');
