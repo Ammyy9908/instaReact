@@ -8,6 +8,25 @@ height:100vh;
                
                
 }
+
+.new_post_btn{
+    width: 135px;
+    height:55px;
+    position:fixed;
+    right: 25px;
+    bottom: 10px;
+    background-color:#0193f5;
+    border: 0;
+    outline:0;
+    color: #fff;
+    border-radius: 65px;
+    font-weight: 600;
+    cursor: pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index: 1000;
+}
 .blank{
    
     background-color:transparent;
@@ -28,8 +47,8 @@ height:100vh;
 .posts{
     width: 90%;
     margin: 5px auto;
-    height:100vh;
-    overflow-x: scroll;
+    height:90vh;
+    overflow-y: scroll;
 }
 .user__posts{
     width: 90%;
@@ -162,9 +181,48 @@ margin-bottom: 5px;
 
 
 
+.navbar__mobile{
+    width: 100%;
+    margin: 10px auto;
+    height:35px;
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top: 0;
+    z-index: 999;
+    background-color:#fff;
+    
+}
+.navbar__mobile > .navbar__mobile__left button{
+    background-color:transparent;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    width: 20px;
+    height:20px;
+    border-radius:5px;
+    margin-left: 10px;
+}
+.navbar__mobile > .navbar__mobile__right button{
+    background-color:transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    width: 35px;
+    height:35px;
+    margin-right: 10px;
+}
+
+
 @media screen and (max-width:1308px){
     .home__profile{
         display:none;
+    }
+    .body__container{
+        display: block;
     }
     .home__body{
         grid-template-columns: 1fr;
@@ -186,7 +244,37 @@ margin-bottom: 5px;
     .start__cards div{
         margin-bottom: 10px;
     }
+   
+   
+}
+
+@media screen and (max-width:650px){
+    .new_post_btn{
+        width: 55px;
+        height: 55px;
+    }
+    .new_post_btn span{
+        display: none;
+    }
     .body__container{
         display: block;
+    }
+    .home__body{
+        display: block;
+    }
+    .body__main__wrapper{
+        width: 100%;
+    }
+    .user__posts{
+        width: 100%;
+    }
+    .posts{
+        margin: 0;
+        width: 100%;
+        margin-top: 0;
+        overflow-y: none;
+    }
+    .body__container{
+        background-color:#fff;
     }
 }
