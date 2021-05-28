@@ -119,7 +119,14 @@ function Auth({type}) {
         })
     }
     const responseGoogle = (response) => {
-        console.log(response);
+        if(response.error){
+            return alert("Eroor");
+        }
+        else{
+            console.log("lOGIN WORKING");
+            console.log(response);
+        }
+
       }
     return (
         <div className={styles.authScreen}>
@@ -143,6 +150,9 @@ function Auth({type}) {
                 <GoogleLogin
     clientId="688025704310-mal2da29j49vmat22s1ad156fg6a93f8.apps.googleusercontent.com"
     buttonText="Login"
+    render={renderProps => (
+        <button onClick={renderProps.onClick} disabled={renderProps.disabled} className="google__btn">Login with Google</button>
+      )}
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
     cookiePolicy={'single_host_origin'}
