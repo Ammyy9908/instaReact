@@ -14,6 +14,9 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import Post from '../components/Post';
 import AddIcon from '@material-ui/icons/Add';
+import SearchIcon from '@material-ui/icons/Search';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import HomeIcon from '../assets/HomeIcon';
 
 function Home(props) {
 
@@ -179,6 +182,18 @@ return browserName;
                        
                     </div>
                 </div>
+                <div className="bottom__navbar">
+            <div className="bottom__navbar__wrapper">
+                <button><HomeIcon/></button>
+                <button><SearchIcon/></button>
+                <button><FavoriteBorderIcon/></button>
+                <button>
+                    <div className="bottom__avatar">
+                    {props.user!=null ?props.user.avatar?<img src={props.user.avatar} alt="avatar__img"/>: props.user.fullName[0]:null}
+                    </div>
+                </button>
+            </div>
+            </div>
                 </div>
                 <div className="home__profile">
                     <div className="home__profile__header" onClick={handleProfileNav}>
@@ -213,6 +228,8 @@ return browserName;
                     </div>
                 </div>
             </div>
+
+           
             <div className="blank"></div>
            </div>
         </div>
