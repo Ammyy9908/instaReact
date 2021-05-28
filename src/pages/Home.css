@@ -237,6 +237,26 @@ margin-bottom: 5px;
     border-radius: 50%;
 }
 
+.message__count{
+    position:absolute;
+    display:block;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    top: 1px;
+    right:5px;
+}
+.navbar__mobile__right button{
+    position: relative;
+}
+
 
 @media screen and (max-width:1308px){
     .home__profile{
