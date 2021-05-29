@@ -30,6 +30,13 @@ function Profile(props) {
      // eslint-disable-next-line
     [])
 
+
+    const handleSheetClose = (e)=>{
+        if(e.target.classList.contains('bottom__sheet')){
+            props.setBottomSheet(false);
+        }
+    }
+
     console.log(props);
     return (
         <div className="profile__page">
@@ -73,7 +80,7 @@ function Profile(props) {
                     </div>
                 </div>
 
-                {props.bottomSheet && <div className={`bottom__sheet`}>
+                {props.bottomSheet && <div className={`bottom__sheet`} onClick={handleSheetClose}>
                     <div className={`bottom__sheet__body ${!props.bottomSheet && "bottom__sheet__down"}`}>
                     <div className="bottom__sheet__top__tile">
                         <span className="sheet__closer" onClick={()=>props.setBottomSheet(false)}></span>
