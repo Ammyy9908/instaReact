@@ -9,6 +9,10 @@ import AddIcon from '@material-ui/icons/Add';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { setUser } from '../actions/userAction';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import SearchIcon from '@material-ui/icons/Search';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import HomeIcon from '../assets/HomeIcon';
 
 function Profile(props) {
     
@@ -35,6 +39,12 @@ function Profile(props) {
         if(e.target.classList.contains('bottom__sheet')){
             props.setBottomSheet(false);
         }
+    }
+
+
+  
+    const handleNav = (link) =>{
+        history.push(link);
     }
 
     console.log(props);
@@ -80,6 +90,10 @@ function Profile(props) {
                     </div>
                 </div>
 
+
+
+                
+
                 {props.bottomSheet && <div className={`bottom__sheet`} onClick={handleSheetClose}>
                     <div className={`bottom__sheet__body ${!props.bottomSheet && "bottom__sheet__down"}`}>
                     <div className="bottom__sheet__top__tile">
@@ -106,6 +120,18 @@ function Profile(props) {
                     </div>
                     </div>
                 </div>}
+            </div>
+            <div className="bottom__navbar">
+            <div className="bottom__navbar__wrapper">
+                <button onClick={()=>handleNav('/')}><HomeIcon fill={props.activePage==="home" && true}/></button>
+                <button onClick={()=>handleNav('/search')}><SearchIcon/></button>
+                <button onClick={()=>handleNav('/activity')}>{props.activePage!=="activity"?<FavoriteBorderIcon/>:<FavoriteIcon/>}</button>
+                <button onClick={()=>handleNav(`/${props.user && props.user.user}/profile`)}>
+                    <div className="bottom__avatar">
+                    {props.user!=null ?props.user.avatar?<img src={props.user.avatar} alt="avatar__img"/>: props.user.fullName[0]:null}
+                    </div>
+                </button>
+            </div>
             </div>
         </div>
     )
