@@ -11,3 +11,8 @@ export const setActivityDrop = (activityDrop)=>({
     type:"SET_ACTIVITY_DROP",
     activityDrop
 })
+
+export const setBottomSheet = (bottomSheet)=>({
+    type:"SET_BOTTOM_SHEET",
+    bottomSheet,
+})

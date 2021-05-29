@@ -2,12 +2,16 @@ import Cookies from 'js-cookie';
 import React from 'react'
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
-import { setPage } from '../actions/uiAction';
+import { setBottomSheet, setPage } from '../actions/uiAction';
 import Navbar from '../components/Navbar';
 import "./Profile.css";
+import AddIcon from '@material-ui/icons/Add';
+import MenuIcon from '@material-ui/icons/Menu';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { setUser } from '../actions/userAction';
 
 function Profile(props) {
-
+    
     React.useEffect(()=>{
         props.setPage('profile');
     },
@@ -25,6 +29,8 @@ function Profile(props) {
     },
      // eslint-disable-next-line
     [])
+
+    console.log(props);
     return (
         <div className="profile__page">
             <Navbar/>
@@ -53,17 +59,62 @@ function Profile(props) {
                     </div>
                 </div>
             </div>
+
+            <div className="profile__mobile">
+                <div className="profile__mobile__nav">
+                    <div className="profile__nav__wrapper">
+                    <div className="profile__username" onClick={()=>props.setBottomSheet(true)}>{props.user && props.user.user} <ExpandMoreIcon/></div>
+                    <div className="profile__nav__controls">
+                        <button className="proifle__add"><AddIcon/></button>
+                        <button className="hamburger__btn">
+                            <MenuIcon/>
+                        </button>
+                    </div>
+                    </div>
+                </div>
+
+                {props.bottomSheet && <div className={`bottom__sheet`}>
+                    <div className={`bottom__sheet__body ${!props.bottomSheet && "bottom__sheet__down"}`}>
+                    <div className="bottom__sheet__top__tile">
+                        <span className="sheet__closer" onClick={()=>props.setBottomSheet(false)}></span>
+                    </div>
+                    <div className="sheet__accounts">
+                        <div className="account_list">
+                            <div className="list__left">
+                            <div className="account__avatar">
+                                {props.user!=null ?props.user.avatar?<img src={props.user.avatar} alt="user__avatar"/>:props.user.fullName[0]:null}
+                            </div>
+                            <span className="account__name">{props.user && props.user.user}</span>
+                            </div>
+                            <div className="custom__radio">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="add__account__list">
+                        <div className="list__left">
+                        <button className="new_account__btn"><AddIcon/></button>
+                        <span>Add account</span>
+                        </div>
+                    </div>
+                    </div>
+                </div>}
+            </div>
         </div>
     )
 }
 
 const mapStateToProps = (state) =>({
     user: state.userReducer.user,
-
+   
+    activePage:state.UIReducer.activePage,
+    bottomSheet:state.UIReducer.bottomSheet,
 })
 
 const mapDispatchToProps = (dispatch)=>({
-
+    setUser:(user)=>dispatch(setUser(user)),
+   
     setPage:(activePage)=>(dispatch(setPage(activePage))),
+    setBottomSheet:(bottomSheet)=>(dispatch(setBottomSheet(bottomSheet)))
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Profile)
