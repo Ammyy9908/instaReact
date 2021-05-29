@@ -9,10 +9,7 @@ import AddIcon from '@material-ui/icons/Add';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { setUser } from '../actions/userAction';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import SearchIcon from '@material-ui/icons/Search';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import HomeIcon from '../assets/HomeIcon';
+
 import BottomNavbar from '../components/BottomNavbar';
 import Sidenav from '../components/Sidenav';
 
@@ -45,11 +42,7 @@ function Profile(props) {
 
 
   
-    const handleNav = (link) =>{
-        history.push(link);
-    }
-
-    console.log(props);
+  
 
 
     const handleSidenavClose =(e)=>{
@@ -105,7 +98,7 @@ function Profile(props) {
                 <div className="profile__mobile__top">
                     <div className="profile__mobile__wrapper">
                     <div className="profile__mobile__avatar">
-                        {props.user!=null ?props.user.avatar?<img src={props.user.avatar}/>:props.user.fullName[0]:null}
+                        {props.user!=null ?props.user.avatar?<img src={props.user.avatar} alt="avatar__img"/>:props.user.fullName[0]:null}
                     </div>
                     <div className="profile__mobile__textual">
                         <span>3<div>Posts</div></span><span>90<div>Followers</div></span><span>236<div>Following</div></span>

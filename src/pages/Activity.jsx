@@ -1,13 +1,8 @@
 import React from 'react';
-import { useHistory } from 'react-router';
 import "./Activity.css"
-import SearchIcon from '@material-ui/icons/Search';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import HomeIcon from '../assets/HomeIcon';
 import { connect } from 'react-redux';
 import { setUser } from '../actions/userAction';
 import { setPage } from '../actions/uiAction';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import BottomNavbar from '../components/BottomNavbar';
 
 
@@ -41,10 +36,7 @@ function Activity(props) {
     },
     // eslint-disable-next-line
     []);
-    const history = useHistory();
-    const handleNav = (link) =>{
-        history.push(link);
-    }
+   
     return (
         <div className="activity">
 

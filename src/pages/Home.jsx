@@ -14,9 +14,7 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import Post from '../components/Post';
 import AddIcon from '@material-ui/icons/Add';
-import SearchIcon from '@material-ui/icons/Search';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import HomeIcon from '../assets/HomeIcon';
+
 import BottomNavbar from '../components/BottomNavbar';
 
 function Home(props) {
