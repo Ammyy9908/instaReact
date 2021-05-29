@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { setUser } from '../actions/userAction';
 import { setPage } from '../actions/uiAction';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import BottomNavbar from '../components/BottomNavbar';
 
 
 
@@ -66,18 +67,7 @@ function Activity(props) {
                 <div className="month__activity"></div>
                 <div className="earlier__activity"></div>
             </div>
-            <div className="bottom__navbar">
-            <div className="bottom__navbar__wrapper">
-                <button onClick={()=>handleNav('/')}><HomeIcon fill={props.activePage==="home" && true}/></button>
-                <button onClick={()=>handleNav('/search')}><SearchIcon/></button>
-                <button onClick={()=>handleNav('/activity')}>{props.activePage!=="activity"?<FavoriteBorderIcon/>:<FavoriteIcon/>}</button>
-                <button onClick={()=>handleNav(`/${props.user && props.user.user}/profile`)}>
-                    <div className="bottom__avatar">
-                    {props.user!=null ?props.user.avatar?<img src={props.user.avatar} alt="avatar__img"/>: props.user.fullName[0]:null}
-                    </div>
-                </button>
-            </div>
-            </div>
+            <BottomNavbar/>
         </div>
     )
 }

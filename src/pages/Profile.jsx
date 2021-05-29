@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import React from 'react'
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
-import { setBottomSheet, setPage } from '../actions/uiAction';
+import { setBottomSheet, setPage, setSidenav } from '../actions/uiAction';
 import Navbar from '../components/Navbar';
 import "./Profile.css";
 import AddIcon from '@material-ui/icons/Add';
@@ -13,6 +13,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import SearchIcon from '@material-ui/icons/Search';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import HomeIcon from '../assets/HomeIcon';
+import BottomNavbar from '../components/BottomNavbar';
+import Sidenav from '../components/Sidenav';
 
 function Profile(props) {
     
@@ -48,9 +50,19 @@ function Profile(props) {
     }
 
     console.log(props);
+
+
+    const handleSidenavClose =(e)=>{
+        console.log(e.target);
+        if(!e.target.classList.contains("hamburger__btn")){
+            props.setSidenav(false);
+        }
+    }
     return (
         <div className="profile__page">
             <Navbar/>
+
+            <Sidenav is_enable={props.sidenav&&props.sidenav}/>
             <div className="profile__page__wrapper">
                 <div className="profile__top">
                     
@@ -77,16 +89,33 @@ function Profile(props) {
                 </div>
             </div>
 
-            <div className="profile__mobile">
+            <div className="profile__mobile" onClick={handleSidenavClose}>
                 <div className="profile__mobile__nav">
                     <div className="profile__nav__wrapper">
                     <div className="profile__username" onClick={()=>props.setBottomSheet(true)}>{props.user && props.user.user} <ExpandMoreIcon/></div>
                     <div className="profile__nav__controls">
                         <button className="proifle__add"><AddIcon/></button>
-                        <button className="hamburger__btn">
+                        <button className="hamburger__btn" onClick={()=>props.setSidenav(true)}>
                             <MenuIcon/>
                         </button>
                     </div>
+                    </div>
+                </div>
+
+                <div className="profile__mobile__top">
+                    <div className="profile__mobile__wrapper">
+                    <div className="profile__mobile__avatar">
+                        {props.user!=null ?props.user.avatar?<img src={props.user.avatar}/>:props.user.fullName[0]:null}
+                    </div>
+                    <div className="profile__mobile__textual">
+                        <span>3<div>Posts</div></span><span>90<div>Followers</div></span><span>236<div>Following</div></span>
+                    </div>
+                    </div>
+
+                    <div className="profile__basic__info">
+                        <span className="basic__uname">{props.user && props.user.fullName}</span>
+                        <span className="caption">https://spotify-home-page-ammyy9908.vercel.app/</span>
+                        <a className="user_website" href="/">https://spotify-home-page-ammyy9908.vercel.app</a>
                     </div>
                 </div>
 
@@ -121,18 +150,7 @@ function Profile(props) {
                     </div>
                 </div>}
             </div>
-            <div className="bottom__navbar">
-            <div className="bottom__navbar__wrapper">
-                <button onClick={()=>handleNav('/')}><HomeIcon fill={props.activePage==="home" && true}/></button>
-                <button onClick={()=>handleNav('/search')}><SearchIcon/></button>
-                <button onClick={()=>handleNav('/activity')}>{props.activePage!=="activity"?<FavoriteBorderIcon/>:<FavoriteIcon/>}</button>
-                <button onClick={()=>handleNav(`/${props.user && props.user.user}/profile`)}>
-                    <div className="bottom__avatar">
-                    {props.user!=null ?props.user.avatar?<img src={props.user.avatar} alt="avatar__img"/>: props.user.fullName[0]:null}
-                    </div>
-                </button>
-            </div>
-            </div>
+            <BottomNavbar/>
         </div>
     )
 }
@@ -142,12 +160,14 @@ const mapStateToProps = (state) =>({
    
     activePage:state.UIReducer.activePage,
     bottomSheet:state.UIReducer.bottomSheet,
+    sidenav:state.UIReducer.sidenav,
 })
 
 const mapDispatchToProps = (dispatch)=>({
     setUser:(user)=>dispatch(setUser(user)),
    
     setPage:(activePage)=>(dispatch(setPage(activePage))),
-    setBottomSheet:(bottomSheet)=>(dispatch(setBottomSheet(bottomSheet)))
+    setBottomSheet:(bottomSheet)=>(dispatch(setBottomSheet(bottomSheet))),
+    setSidenav:(sidenav)=>(dispatch(setSidenav(sidenav)))
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Profile)

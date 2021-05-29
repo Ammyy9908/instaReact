@@ -2,7 +2,8 @@ const intialState = {
     drop:false,
     activePage:"home",
     activityDrop:false,
-    bottomSheet:false
+    bottomSheet:false,
+    sidenav:false,
 }
 
 
@@ -12,6 +13,13 @@ const UIReducer = (state=intialState,action)=>{
             return {
                 ...state,
                 drop:action.drop
+            }
+        }
+
+        case "SET_SIDENAV":{
+            return{
+                ...state,
+                sidenav:action.sidenav
             }
         }
 

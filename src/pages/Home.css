@@ -204,8 +204,9 @@ margin-bottom: 5px;
     background-color: rgb(255, 255, 255);
     overflow:hidden;
     box-shadow: -1px -1px 10px rgba(0,0,0,.115);
-  position:sticky;
-  bottom:0;
+  position:fixed;
+  
+  bottom:0px;
 }
 .bottom__navbar__wrapper{
     width: 90%;

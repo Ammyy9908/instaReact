@@ -16,3 +16,8 @@ export const setBottomSheet = (bottomSheet)=>({
     type:"SET_BOTTOM_SHEET",
     bottomSheet,
 })
+
+export const setSidenav = (sidenav)=>({
+    type:"SET_SIDENAV",
+    sidenav
+})

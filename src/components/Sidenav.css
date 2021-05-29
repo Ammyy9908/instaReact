@@ -1,0 +1,66 @@
+.sidenav{
+    width: 65%;
+    height:100vh;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    right: -450px;
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-rows:.1fr 1.5fr .1fr;
+    z-index: 9999;
+    border-left: 1px solid #e9e9e9;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.0975);
+    transition: all .5s ease-in-out;
+    display: none;
+}
+.sidenav__enable{
+    right: 0;
+    display:grid;
+}
+.sidenav__header{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    background-color:#fff;
+    border-bottom: 1px solid #e9e9e9;
+    font-weight: 600;
+}
+.sidenav__body{
+    width: 100%;
+    height:100%;
+    background-color: transparent;
+    display:flex;
+    flex-direction: column;
+}
+.sidenav__body span{
+    padding:.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+.sidenav__body span .MuiSvgIcon-root{
+    margin-right: 10px;
+}
+.sidenav__footer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.sidenav__footer button{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    background-color:transparent;
+    border: 0;
+    outline: 0;
+    font-weight: 600;
+}
+.sidenav__footer button svg{
+    margin-right: 10px;
+}

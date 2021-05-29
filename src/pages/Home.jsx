@@ -17,6 +17,7 @@ import AddIcon from '@material-ui/icons/Add';
 import SearchIcon from '@material-ui/icons/Search';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import HomeIcon from '../assets/HomeIcon';
+import BottomNavbar from '../components/BottomNavbar';
 
 function Home(props) {
 
@@ -152,9 +153,7 @@ return browserName;
 
 
 
-    const handleNav = (link) =>{
-        history.push(link);
-    }
+  
     return (
         <div className="home__container">
 
@@ -244,18 +243,7 @@ return browserName;
                     </div>
                 </div>
             </div>
-            <div className="bottom__navbar">
-            <div className="bottom__navbar__wrapper">
-                <button onClick={()=>handleNav('/')}><HomeIcon fill={props.activePage==="home" && true}/></button>
-                <button onClick={()=>handleNav('/search')}><SearchIcon/></button>
-                <button onClick={()=>handleNav('/activity')}><FavoriteBorderIcon/></button>
-                <button onClick={()=>handleNav(`/${props.user && props.user.user}/profile`)}>
-                    <div className="bottom__avatar">
-                    {props.user!=null ?props.user.avatar?<img src={props.user.avatar} alt="avatar__img"/>: props.user.fullName[0]:null}
-                    </div>
-                </button>
-            </div>
-            </div>
+           <BottomNavbar/>
            
             <div className="blank"></div>
            </div>

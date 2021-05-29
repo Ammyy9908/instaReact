@@ -10,7 +10,6 @@
    
     background-color: #fff;
     z-index: 99;
-    box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.115);
     margin-bottom: 15px;
 }
 .screen__name__wrapper h3{
@@ -21,7 +20,7 @@
     margin: 0 auto;
 }
 .activity__wrapper{
-    height:95vh;
+    height:85vh;
     width: 90%;
     margin: 5px auto;
 }
