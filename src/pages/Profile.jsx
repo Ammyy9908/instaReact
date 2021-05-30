@@ -51,6 +51,11 @@ function Profile(props) {
             props.setSidenav(false);
         }
     }
+
+
+    const handleEditNav = () =>{
+        history.push(`/${props.user!=null&&props.user.user}/profile/edit`);
+    }
     return (
         <div className="profile__page">
             <Navbar/>
@@ -109,6 +114,12 @@ function Profile(props) {
                         <span className="basic__uname">{props.user && props.user.fullName}</span>
                         <span className="caption">https://spotify-home-page-ammyy9908.vercel.app/</span>
                         <a className="user_website" href="/">https://spotify-home-page-ammyy9908.vercel.app</a>
+                    </div>
+                    <div className="edit__profile__wrapper">
+                        <button onClick={handleEditNav}>Edit Profile</button>
+                        <div className="btn__arrow__down">
+                            <ExpandMoreIcon/>
+                        </div>
                     </div>
                 </div>
 

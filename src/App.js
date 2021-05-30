@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import ConfirmPhone from "./pages/ConfirmPhone";
 import Inbox from "./pages/Inbox";
 import Activity from "./pages/Activity";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
     <Activity/>
     </Route>
  
+    <Route exact path="/:uname/profile/edit" render={(props) => {
+   const uname = props.match.params.uname;
+    return <EditProfile uname={uname} />
+}}  />
 
 
 

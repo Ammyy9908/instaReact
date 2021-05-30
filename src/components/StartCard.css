@@ -58,3 +58,24 @@ width: auto;
 font-size: 14px;
 line-height: 18px;
 }
+.form__control_file{
+    width: 100%;
+}
+.form__control_file input{
+    display: none;
+}
+.form__control_file label{
+    border: 1px solid transparent;
+    background-color: rgba(2, 151, 247, 1);
+    color: #fff;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+display: block;
+font-weight: 600;
+padding: 5px 9px;
+text-align: center;
+width: auto;
+font-size: 14px;
+line-height: 18px;
+}

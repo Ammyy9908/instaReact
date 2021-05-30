@@ -22,6 +22,9 @@ function Auth({type}) {
     const [error,setError] = React.useState(false);
     const [avatar,setAvatar] = React.useState('');
 
+
+
+    // online server uri:https://secure-woodland-04703.herokuapp.com
     React.useEffect(() => {
             setUsername('');
             setFullName('');

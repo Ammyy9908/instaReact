@@ -12,7 +12,7 @@ function ConfirmPhone(props) {
 const [phone,setPhone] =React.useState('');
     const handlePhoneAdd = async ()=>{
         try{
-            const r = await axios.put(`http://localhost:5000/auth/add/phone`,{phone:phone,uid:props.user && props.user.id});
+            const r = await axios.put(`https://secure-woodland-04703.herokuapp.com/auth/add/phone`,{phone:phone,uid:props.user && props.user.id});
             return r.data;
         }
         catch(e){

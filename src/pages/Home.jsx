@@ -14,18 +14,36 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import Post from '../components/Post';
 import AddIcon from '@material-ui/icons/Add';
-
+import io from "socket.io-client";
 import BottomNavbar from '../components/BottomNavbar';
 
 function Home(props) {
+
+  
+
+    const ENDPOINT = 'http://localhost:5000';
+    let socket;
+
+    socket = io(ENDPOINT,{transports: ['websocket', 'polling', 'flashsocket']});
+    props.user!==null && socket.emit('user', { email:props.user.email,time:new Date().getTime() }, (error) => {
+        if(error) {
+          alert(error);
+        }
+      });
+
+    
 
     //set the active page when page loads first time
 
     React.useEffect(()=>{
         props.setPage('home');
+
+      
+
     },
     // eslint-disable-next-line
     []);
+   
 
     console.log("user Props are",props)
 const [browser,setBorwser] = React.useState('');
@@ -75,6 +93,10 @@ return browserName;
 
     const history = useHistory();
     React.useEffect(() =>{
+
+        window.addEventListener("beforeunload",(e)=>{
+            alert("Do you want to close the app?");
+        })
         
         //check authentication status
         if(!Cookies.get("AUTH_TOKEN")){
@@ -120,7 +142,7 @@ return browserName;
             getLocation().then((data)=>{
                 console.log(data);
                 try{
-                    const r = axios.put("https://secure-woodland-04703.herokuapp.com/auth/updateActivity",{data,browser:browser && browser,email: props.user && props.user.email});
+                    const r = axios.put("https://secure-woodland-04703.herokuapp.com/auth/updateActivity",{data,browser:browser && browser,email: props.user!=null && props.user.email});
                     console.log(r.data)
                 }
                 catch(e){
@@ -181,8 +203,8 @@ return browserName;
                        </div>:null}
 
                        <div className="start__cards">
-                       {props.user && !props.user.phone && <StartCard title="Add Phone Number" subtitle="Add your phone number so you can reset your password, find friends and more." button="Add Phone Number" Icon={PhoneIcon} link="/accounts/confirm-phone"/>}
-                        {props.user && !props.user.avatar && <StartCard title="Add Profile Photo" subtitle="Add a profile photo so your friends know it's you." button="Add Profile Photo" Icon={PhotoCameraIcon} link="/accounts/profile-picture"/> }
+                       {props.user && !props.user.phone && <StartCard title="Add Phone Number" subtitle="Add your phone number so you can reset your password, find friends and more." button="Add Phone Number" Icon={PhoneIcon} link="/accounts/confirm-phone" type="phone"/>}
+                        {props.user && !props.user.avatar && <StartCard title="Add Profile Photo" subtitle="Add a profile photo so your friends know it's you." button="Add Profile Photo" Icon={PhotoCameraIcon} link="/accounts/profile-picture" type="photo"/> }
                        </div>
 
                     </div>

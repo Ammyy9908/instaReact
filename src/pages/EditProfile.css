@@ -1,0 +1,95 @@
+.editProfile{
+    width:100%;
+    
+}
+.edit__profile__header{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+.header__left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.header__left button{
+    background-color:transparent;
+    border: 0;
+    outline:0;
+    margin-right: 20px;
+}
+.header__right{
+    color: blue;
+}
+.edit__profile__top{
+    width: 90%;
+    margin: 25px auto;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    
+}
+.edit__avatar{
+    width: 95px;
+    height: 95px;
+    background-color:#999;
+    margin-bottom: 15px;
+    border-radius:50%;
+}
+.edit__avatar img{
+    width: 100%;
+    border-radius:50%;
+    object-fit: cover;
+    height: 100%;
+}
+.edit__profile__top button{
+    width: 90%;
+    height:45px;
+    background-color: transparent;
+    border: 0;
+    outline:0;
+    font-weight: 500;
+    color: rgb(0, 156, 246);
+    font-size: 16px;
+}
+.edit__profile__form{
+    width: 90%;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+}
+.edit__form__control{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    margin-bottom: 15px;
+}
+.edit__form__control label{
+    color: rgb(131, 131, 131);
+}
+.edit__form__control input{
+    width: 100%;
+    height:35px;
+    border: 0;
+    border-bottom: 1px solid #999;
+    outline:0;
+}
+.edit__form__control_file{
+    width: 100%;
+}
+.edit__form__control_file input{
+    display:none;
+}
+.edit__form__control_file label{
+    width: 90%;
+    height:45px;
+    background-color: transparent;
+    border: 0;
+    outline:0;
+    font-weight: 500;
+    color: rgb(0, 156, 246);
+    font-size: 16px;
+}

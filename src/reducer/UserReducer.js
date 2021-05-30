@@ -12,6 +12,15 @@ const UserReducer = (state=intialState,action)=>{
             }
         }
 
+        case "SET_AVATAR":{
+            state.user.avatar = action.avatar;
+            return{
+                ...state,
+                
+
+            }
+        }
+
         default:
             return{
                 ...state

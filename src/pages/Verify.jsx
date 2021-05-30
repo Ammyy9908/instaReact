@@ -4,6 +4,8 @@ import { useHistory } from 'react-router';
 import Toast from '../components/Toast';
 import "./Verify.css"
 
+//online:https://secure-woodland-04703.herokuapp.com
+
 function Verify({email}) {
     const [code,setCode] = React.useState('');
     const [error,setError] = React.useState(false);
