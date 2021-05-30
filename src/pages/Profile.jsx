@@ -65,7 +65,7 @@ function Profile(props) {
                 <div className="profile__top">
                     
                     <div className="user__avatar__big">
-                    {props.user && props.user.avatar?<img src={props.user.avatar} alt="avatar__img"/>:props.user.fullName.slice(0,2)}
+                    {props.user!=null ? props.user.avatar?<img src={props.user.avatar} alt="avatar__img"/>:props.user.fullName.slice(0,2):null}
                     </div>
                     <div className="user__profile__details">
                             <div className="detail__first">
@@ -112,8 +112,8 @@ function Profile(props) {
 
                     <div className="profile__basic__info">
                         <span className="basic__uname">{props.user && props.user.fullName}</span>
-                        <span className="caption">https://spotify-home-page-ammyy9908.vercel.app/</span>
-                        <a className="user_website" href="/">https://spotify-home-page-ammyy9908.vercel.app</a>
+                        <span className="caption">{props.user && props.user.bio}</span>
+                        <a className="user_website" href="/">{props.user && props.user.website}</a>
                     </div>
                     <div className="edit__profile__wrapper">
                         <button onClick={handleEditNav}>Edit Profile</button>

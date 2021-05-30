@@ -32,6 +32,8 @@ margin-bottom: 30px;
 .user__avatar__big img{
     width: 100%;
     border-radius:50%;
+    height:100%;
+    object-fit: cover;
 }
 .user__profile__details{
     flex: 1;
@@ -370,10 +372,17 @@ font-weight: 600;
     .profile__page__wrapper{
         width: calc(100% -48px);
     }
+    
 }
 
 @media screen and (max-width:465px){
     .profile__page__wrapper{
         display:none;
+    }
+}
+
+@media screen and (min-width:466px){
+    .profile__mobile{
+        display: none;
     }
 }

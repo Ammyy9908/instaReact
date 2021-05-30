@@ -21,7 +21,7 @@ function Home(props) {
 
   
 
-    const ENDPOINT = 'http://localhost:5000';
+    const ENDPOINT = 'https://secure-woodland-04703.herokuapp.com/';
     let socket;
 
     socket = io(ENDPOINT,{transports: ['websocket', 'polling', 'flashsocket']});

@@ -137,6 +137,8 @@ background-image: url(https://www.instagram.com/static/bundles/es6/sprite_core_3
 .avatar img{
     width:100%;
     border-radius:50%;
+    height:100%;
+    object-fit: cover;
 }
 
 
