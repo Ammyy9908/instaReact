@@ -94,13 +94,17 @@ function EditProfile(props) {
         })
     }
 
+    const closeScreen = () =>{
+        history.push(`/${props.user && props.user.user}/profile`);
+    }
+
 
 
     return (
         <div className="editProfile">
             <div className="edit__profile__header">
                 <div className="header__left">
-                <button><CloseIcon/></button>
+                <button onClick={closeScreen}><CloseIcon/></button>
                 <h3>Edit Profile</h3>
                 </div>
                 <div className="header__right" onClick={handleUpdate}>
