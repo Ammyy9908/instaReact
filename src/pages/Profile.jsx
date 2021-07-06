@@ -49,7 +49,7 @@ function Profile(props) {
     React.useEffect(()=>{
         props.setPage('profile');
 
-        axios.get(`http://localhost:5000/auth/user/${props.uname}`,{headers: {
+        axios.get(`https://secure-woodland-04703.herokuapp.com/auth/user/${props.uname}`,{headers: {
             "Authorization": "Bearer " + Cookies.get("AUTH_TOKEN")
         }}).then((response)=>{
             console.log("Requested user is ",response.data.user);
