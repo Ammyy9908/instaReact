@@ -69,7 +69,7 @@ function Home(props) {
         }
         async function getUser() {
                 try{
-                    const r = await axios.get('http://localhost:5000/auth/user',{headers:{
+                    const r = await axios.get('https://secure-woodland-04703.herokuapp.com/auth/user',{headers:{
                         "Authorization":"Bearer " +Cookies.get("AUTH_TOKEN"),
                         "Content-Type":"application/json"
                     }})
