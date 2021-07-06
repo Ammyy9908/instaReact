@@ -5,10 +5,11 @@ import SendIcon from '../assets/SendIcon';
 import ExploreIcon from '../assets/ExploreIcon';
 import LikeIcon from '../assets/LikeIcon';
 import { connect } from 'react-redux';
-import { setActivityDrop, setDrop, setPage } from '../actions/uiAction';
+import { setActivityDrop, setDrop, setNewPost, setPage } from '../actions/uiAction';
 import { useHistory } from 'react-router';
 import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
+import AddIcon from '../assets/AddIcon';
 
 function Navbar(props) {
 
@@ -85,6 +86,7 @@ function Navbar(props) {
                 <div className="navbar__main">
                     <li onClick={()=>handleNav("/")}><HomeIcon fill={props.activePage==="home" && props.activePage==="home"}/></li>
                     <li onClick={()=>handleNav("/direct/inbox")}><SendIcon fill={props.activePage==="message"&&props.activePage==="message"}/></li>
+                    <li onClick={()=>props.setNewPost(true)}><AddIcon/></li>
                     <li onClick={()=>handleNav("/explore")}><ExploreIcon/></li>
                     <li onClick={handleLikeDrop}><LikeIcon fill={props.activityDrop&&props.activityDrop}/></li>
                     <li><div className={`avatar ${props.activePage==="profile" ? "avatar__bordered":null}`} onClick={handleProfileDrop}>{props.user!=null ? props.user.avatar?<img src={props.user.avatar} className="avatar__image" alt="avatar__img"/>:props.user.fullName[0]:null}</div></li>
@@ -136,6 +138,7 @@ const mapStateToProps = (state)=>({
 const mapDispatchToProps = (dispatch)=>({
     setDrop:(drop)=>(dispatch(setDrop(drop))),
     setPage:(activePage)=>(dispatch(setPage(activePage))),
-    setActivityDrop:(acctivityDrop)=>(dispatch(setActivityDrop(acctivityDrop)))
+    setActivityDrop:(acctivityDrop)=>(dispatch(setActivityDrop(acctivityDrop))),
+    setNewPost:(isNewPost)=>(dispatch(setNewPost(isNewPost))),
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Navbar)

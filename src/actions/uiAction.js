@@ -2,6 +2,26 @@ export const setDrop=(drop)=>({
     type:"SET_DROP",
     drop
 })
+
+export const setPost=(posts)=>({
+    type:"SET_POST",
+    posts
+})
+
+export const addPost=(post)=>({
+    type:"ADD_POST",
+    post
+})
+
+export const setTab = (tab)=>({
+    type:"SET_TAB",
+    tab
+})
+
+export const setNewPost = (isNewPost)=>({
+    type:"SET_NEW_POST",
+    isNewPost
+})
 export const setPage = (activePage)=>({
     type:"SET_PAGE",
     activePage

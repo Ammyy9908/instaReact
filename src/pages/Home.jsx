@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 import React from 'react'
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
-import { setDrop, setPage } from '../actions/uiAction';
+import { setDrop, setNewPost, setPage, setPost } from '../actions/uiAction';
 import { setUser } from '../actions/userAction';
 import Navbar from '../components/Navbar';
 import StartCard from '../components/StartCard';
@@ -14,22 +14,31 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import Post from '../components/Post';
 import AddIcon from '@material-ui/icons/Add';
-import io from "socket.io-client";
 import BottomNavbar from '../components/BottomNavbar';
+import NewPostModal from '../components/NewPostModal';
+import {SocketContext, socket} from '../context/context';
+import Skeleton from 'react-loading-skeleton';
+
 
 function Home(props) {
 
   
 
-    const ENDPOINT = 'https://secure-woodland-04703.herokuapp.com/';
-    let socket;
+  
 
-    socket = io(ENDPOINT,{transports: ['websocket', 'polling', 'flashsocket']});
-    props.user!==null && socket.emit('user', { email:props.user.email,time:new Date().getTime() }, (error) => {
-        if(error) {
-          alert(error);
-        }
-      });
+    React.useEffect(()=>{
+       axios.get(`https://secure-woodland-04703.herokuapp.com/post/all`).then((response)=>{
+           const {posts} = response.data;
+           console.log(posts);
+           props.setPost(posts);
+       })
+       .catch((error)=>{
+           console.error(error);
+       })
+        console.log("Requesting posts")
+    },
+    // eslint-disable-next-line
+    [])
 
     
 
@@ -46,57 +55,13 @@ function Home(props) {
    
 
     console.log("user Props are",props)
-const [browser,setBorwser] = React.useState('');
-    async function getBrowser(){
-        var navUserAgent = navigator.userAgent;
-var browserName  = navigator.appName;
-var browserVersion  = ''+parseFloat(navigator.appVersion); 
-// var majorVersion = parseInt(navigator.appVersion,10);
-var tempNameOffset,tempVersionOffset,tempVersion;
 
 
-if ((tempVersionOffset=navUserAgent.indexOf("Opera"))!==-1) {
- browserName = "Opera";
- browserVersion = navUserAgent.substring(tempVersionOffset+6);
- if ((tempVersionOffset=navUserAgent.indexOf("Version"))!==-1) 
-   browserVersion = navUserAgent.substring(tempVersionOffset+8);
-} else if ((tempVersionOffset=navUserAgent.indexOf("MSIE"))!==-1) {
- browserName = "Microsoft Internet Explorer";
- browserVersion = navUserAgent.substring(tempVersionOffset+5);
-} else if ((tempVersionOffset=navUserAgent.indexOf("Chrome"))!==-1) {
- browserName = "Chrome";
- browserVersion = navUserAgent.substring(tempVersionOffset+7);
-} else if ((tempVersionOffset=navUserAgent.indexOf("Safari"))!==-1) {
- browserName = "Safari";
- browserVersion = navUserAgent.substring(tempVersionOffset+7);
- if ((tempVersionOffset=navUserAgent.indexOf("Version"))!==-1) 
-   browserVersion = navUserAgent.substring(tempVersionOffset+8);
-} else if ((tempVersionOffset=navUserAgent.indexOf("Firefox"))!==-1) {
- browserName = "Firefox";
- browserVersion = navUserAgent.substring(tempVersionOffset+8);
-} else if ( (tempNameOffset=navUserAgent.lastIndexOf(' ')+1) < (tempVersionOffset=navUserAgent.lastIndexOf('/')) ) {
- browserName = navUserAgent.substring(tempNameOffset,tempVersionOffset);
- browserVersion = navUserAgent.substring(tempVersionOffset+1);
- if (browserName.toLowerCase()===browserName.toUpperCase()) {
-  browserName = navigator.appName;
- }
-}
-
-// trim version
-if ((tempVersion=browserVersion.indexOf(";"))!==-1)
-   browserVersion=browserVersion.substring(0,tempVersion);
-if ((tempVersion=browserVersion.indexOf(" "))!==-1)
-   browserVersion=browserVersion.substring(0,tempVersion);
-
-return browserName;
-    }
 
     const history = useHistory();
     React.useEffect(() =>{
 
-        window.addEventListener("beforeunload",(e)=>{
-            alert("Do you want to close the app?");
-        })
+       
         
         //check authentication status
         if(!Cookies.get("AUTH_TOKEN")){
@@ -104,7 +69,7 @@ return browserName;
         }
         async function getUser() {
                 try{
-                    const r = await axios.get('https://secure-woodland-04703.herokuapp.com/auth/user',{headers:{
+                    const r = await axios.get('http://localhost:5000/auth/user',{headers:{
                         "Authorization":"Bearer " +Cookies.get("AUTH_TOKEN"),
                         "Content-Type":"application/json"
                     }})
@@ -118,42 +83,13 @@ return browserName;
                 }
         }
 
-        async function getLocation(){
-            try{
-                const r = await axios.get('https://ipinfo.io/json?token=6aac6eda5b818a');
-                return r.data;
-            }
-            catch(e){
-                if(e.response && e.response.data){
-                    return e.response.data;
-                }
-            }
-        }
-        getBrowser().then((data)=>{
-            console.log(data);
-            setBorwser(data);
-        })
+      
+      
        
 
         getUser().then((data) => {
             console.log("User data",data);
             props.setUser(data.user);
-        }).then(()=>{
-            getLocation().then((data)=>{
-                console.log(data);
-                try{
-                    const r = axios.put("https://secure-woodland-04703.herokuapp.com/auth/updateActivity",{data,browser:browser && browser,email: props.user!=null && props.user.email});
-                    console.log(r.data)
-                }
-                catch(e){
-                    console.log(e);
-                }
-            }).catch((e)=>{
-                console.error("Location error",e);
-            })
-        })
-        .catch((err) => {
-            console.error(err)
         })
 
     
@@ -175,13 +111,13 @@ return browserName;
 
   
     return (
-        <div className="home__container">
+        <SocketContext.Provider value={socket}><div className="home__container">
 
-         
+{props.isNewPost && <NewPostModal/>}
             <Navbar/>
-
+                
             <div className="navbar__mobile">
-                <div className="navbar__mobile__left"><button><AddIcon/></button></div>
+                <div className="navbar__mobile__left"><button onClick={()=>props.setNewPost(!props.isNewPost)}><AddIcon/></button></div>
                 <div className="navbar__mobile__center">
                 <img alt="Instagram" class="s4Iyt" src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" srcset="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png 2x"/>
                 </div>
@@ -191,6 +127,8 @@ return browserName;
                         <MessageIcon/></button>
                 </div>
             </div>
+
+            
            <div className="body__container" onClick={()=>props.drop && props.setDrop(false)}>
            <div className="blank"></div>
             <div className="home__body">
@@ -210,10 +148,20 @@ return browserName;
                     </div>
 
                     <div className="users__posts">
-                        <Post keyword={"mountain"} likes={250}/>
-                        <Post keyword={"grass"} likes={120}/>
-                        <Post keyword={"night"} likes={50}/>
-                        <Post keyword={"party"} likes={65}/>
+                        
+                        {
+                            !props.posts && <div className="post__loaders">
+                                <Skeleton height={780}/>
+                                <Skeleton/>
+                                <Skeleton/>
+                                <Skeleton/>
+                            </div>
+                        }
+                        {
+                            props.user && props.posts && props.posts.map((post,i)=>{
+                                return  <Post keyword={"party"} likes={post.likes.length} image={post.image.url} upload_by={post.upload_by} id={post._id} likedArray={post.likes} time={post.uploadAt} commentOff={post.commentOff} altText={post.altText}/>
+                            })
+                        }
                        
                     </div>
                 </div>
@@ -268,6 +216,7 @@ return browserName;
             <div className="blank"></div>
            </div>
         </div>
+        </SocketContext.Provider>
     )
 }
 
@@ -275,12 +224,16 @@ const mapStateToProps = (state) =>({
     user: state.userReducer.user,
     drop: state.UIReducer.drop,
     activePage:state.UIReducer.activePage,
+    isNewPost:state.UIReducer.isNewPost,
+    posts:state.UIReducer.posts,
 })
 
 const mapDispatchToProps = (dispatch)=>({
     setUser:(user)=>dispatch(setUser(user)),
     setDrop:(drop)=>(dispatch(setDrop(drop))),
     setPage:(activePage)=>(dispatch(setPage(activePage))),
+    setNewPost:(isNewPost)=>(dispatch(setNewPost(isNewPost))),
+    setPost:(posts)=>(dispatch(setPost(posts)))
 })
 
 

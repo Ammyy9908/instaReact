@@ -5,7 +5,7 @@
 background-color:rgba(250, 250, 250, 1);
 
 height:100vh;
-               
+               overflow: hidden;
                
 }
 
@@ -30,8 +30,9 @@ height:100vh;
 .posts{
     width: 90%;
     margin: 5px auto;
-    height:90vh;
+    height:100vh;
     overflow-y: scroll;
+    scrollbar-color: yellow;
 }
 .user__posts{
     width: 90%;
@@ -48,7 +49,7 @@ height:100vh;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content:space-between;
     margin: 25px auto;
     position: absolute;
     top: 0;
@@ -56,7 +57,7 @@ height:100vh;
     right: 0;
     cursor: pointer;
 }
-.user_avatar{
+.home__profile__header .user_avatar{
     width: 56px;
     height: 56px;
     background-color:rgb(0, 38, 255);
@@ -66,9 +67,11 @@ height:100vh;
     justify-content: center;
     color: #fff;
 }
-.user_avatar img{
+.home__profile__header .user_avatar img{
     width: 100%;
     border-radius:50%;
+    height: 100%;
+    object-fit: cover;
 }
 .user__textual__info{
     display: flex;
@@ -114,8 +117,8 @@ color: rgba(1, 149, 245, 1);
     justify-content:space-between;
     padding-bottom: 4px;
 padding-top: 4px;
-padding-left: 16px;
-padding-right: 16px;
+/* padding-left: 16px;
+padding-right: 16px; */
 }
 .textual__left{
     display: block;
@@ -263,6 +266,7 @@ margin-bottom: 5px;
 }
 
 
+
 @media screen and (max-width:1308px){
     .home__profile{
         display:none;
@@ -323,6 +327,7 @@ margin-bottom: 5px;
     .getting__started{
         display: none;
     }
+    
 }
 
 

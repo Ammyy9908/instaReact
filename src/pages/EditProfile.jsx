@@ -72,7 +72,7 @@ function EditProfile(props) {
 
     const handleEdit = async ()=>{
         try{
-            const r = await axios.put(`https://secure-woodland-04703.herokuapp.com/auth/update/${props.user && props.user.id}`,{name,website,uname,bio});
+            const r = await axios.put(`http://localhost:5000/auth/update/${props.user && props.user.id}`,{name,website,uname,bio});
             return r.data;
         }
         catch(e){
