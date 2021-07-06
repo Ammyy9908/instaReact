@@ -5,11 +5,12 @@ import SendIcon from '../assets/SendIcon';
 import ExploreIcon from '../assets/ExploreIcon';
 import LikeIcon from '../assets/LikeIcon';
 import { connect } from 'react-redux';
-import { setActivityDrop, setDrop, setNewPost, setPage } from '../actions/uiAction';
+import { setActivityDrop, setDrop, setNewPost, setPage, setPost } from '../actions/uiAction';
 import { useHistory } from 'react-router';
 import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 import AddIcon from '../assets/AddIcon';
+import { setUser } from '../actions/userAction';
 
 function Navbar(props) {
 
@@ -18,6 +19,13 @@ function Navbar(props) {
     const handleLogout = ()=>{
         Cookies.remove("AUTH_TOKEN");
         history.push(`/auth/login`);
+    props.setDrop(false)
+    props.setPage('login')
+    props.setActivityDrop(false)
+    props.setNewPost(false)
+    props.setUser(null);
+    props.setPost(null);
+
     }
 
 
@@ -140,5 +148,8 @@ const mapDispatchToProps = (dispatch)=>({
     setPage:(activePage)=>(dispatch(setPage(activePage))),
     setActivityDrop:(acctivityDrop)=>(dispatch(setActivityDrop(acctivityDrop))),
     setNewPost:(isNewPost)=>(dispatch(setNewPost(isNewPost))),
+    setUser:(user)=>dispatch(setUser(user)),
+   
+    setPost:(posts)=>(dispatch(setPost(posts)))
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
