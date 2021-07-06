@@ -12,7 +12,7 @@ function Verify({email}) {
     const history = useHistory();
     const verify = async ()=>{
         try{
-            const r = await axios.post(`https://secure-woodland-04703.herokuapp.com/ /auth/verify`,{email:email,verifyCode:code});
+            const r = await axios.post(`https://secure-woodland-04703.herokuapp.com/auth/verify`,{email:email,verifyCode:code});
             return r.data;
         }
         catch(e){
