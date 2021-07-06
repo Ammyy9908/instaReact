@@ -18,7 +18,7 @@ function StartCard({title,subtitle,button,Icon,link,type,user,setUser}) {
 
     const handleProfilePicture = async (img)=>{
         try{
-            const r = await axios.put(`http://localhost:5000/auth/add/avatar`,{img:img,id:user!=null&&user.id});
+            const r = await axios.put(`https://secure-woodland-04703.herokuapp.com/auth/add/avatar`,{img:img,id:user!=null&&user.id});
             return r.data;
         }
         catch(e){
